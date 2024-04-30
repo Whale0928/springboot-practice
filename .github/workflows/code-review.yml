@@ -10,11 +10,11 @@ on:
 
 jobs:
   #if: ${{ contains(github.event.head_commit.message, '#code-review')}}
-  if: >-
-    ${{ contains(github.event.head_commit.message, '#code-review') &&
-    contains(github.event.head_commit.message, '#cr')
-    }}
   test:
+    if: >-
+      ${{ contains(github.event.head_commit.message, '#code-review') &&
+      contains(github.event.head_commit.message, '#cr')
+      }}
     runs-on: ubuntu-latest
     steps:
       - uses: anc95/ChatGPT-CodeReview@main
