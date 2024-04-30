@@ -1,4 +1,4 @@
-package app.practice.springbootpractice;
+package app.practice.springbootpractice.cache;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;
