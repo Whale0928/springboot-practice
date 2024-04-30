@@ -9,6 +9,7 @@ on:
     types: [ opened, reopened, synchronize ]
 
 jobs:
+  if: contains(github.event.head_commit.message, '#code-review') || contains(github.event.head_commit.message, '#code_review')
   test:
     runs-on: ubuntu-latest
     steps:
@@ -16,6 +17,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          # optional
           LANGUAGE: Korean
-          PROMPT: "만약 간단한 오탈자 수정 , 문장구조 , 설정파일등 간단한 수준이라면 리뷰를 스킵해주세요."
+          PROMPT: "If it is at a simple level such as correcting a simple typo, sentence structure, or configuration file, please skip the review."
