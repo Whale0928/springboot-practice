@@ -11,14 +11,8 @@ on:
 jobs:
   code-review:
     runs-on: ubuntu-latest
+    if: "contains(github.event.pull_request.title, '[코드리뷰]')"
     steps:
-      - name: skip-workflow
-        id: skip-workflow # id used for referencing step
-        uses: saulmaldonado/skip-workflow@v1
-        with:
-          phrase: /^\[skip-cr\]/i # matches with commits starting with '[skip-workflow]'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
       - uses: anc95/ChatGPT-CodeReview@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
