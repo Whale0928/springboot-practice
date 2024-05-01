@@ -10,7 +10,7 @@ on:
 
 jobs:
   code-review:
-    if: ${{ contains(github.event.head_commit.message, '#코드리뷰') }}
+    #if: ${{ contains(github.event.head_commit.message, '#코드리뷰') }}
     runs-on: ubuntu-latest
     steps:
       - uses: anc95/ChatGPT-CodeReview@main
