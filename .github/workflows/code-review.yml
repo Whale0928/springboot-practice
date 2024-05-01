@@ -10,10 +10,15 @@ on:
 
 jobs:
   code-review:
-    if: ${{contains(github.event.head_commit.message, '#code-review') ||
-            contains(github.event.head_commit.message, '#코드리뷰') }}
     runs-on: ubuntu-latest
     steps:
+      - name: skip-workflow
+        id: skip-workflow # id used for referencing step
+        uses: saulmaldonado/skip-workflow@v1
+        with:
+          phrase: /^\[skip-cr\]/i # matches with commits starting with '[skip-workflow]'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: anc95/ChatGPT-CodeReview@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
