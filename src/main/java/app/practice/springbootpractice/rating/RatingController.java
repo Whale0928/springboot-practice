@@ -17,10 +17,8 @@ public class RatingController {
 	
 	@GetMapping
 	public Object getRatings(@RequestParam("star") StarRating rating) {
-		log.info("Rating: {}", rating);
 		Rating rat = Rating.builder().rating(rating).build();
-		Rating save = ratingRepo.save(rat);
-		return save.toString();
+		return  ratingRepo.save(rat).toString();
 	}
 	
 }
