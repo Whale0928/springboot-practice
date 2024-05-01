@@ -20,7 +20,6 @@ public class RatingController {
 		log.info("Rating: {}", rating);
 		Rating rat = Rating.builder().rating(rating).build();
 		Rating save = ratingRepo.save(rat);
-		System.out.println(save.toString());
 		return save.toString();
 	}
 	
