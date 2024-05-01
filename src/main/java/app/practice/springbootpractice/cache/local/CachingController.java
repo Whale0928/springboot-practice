@@ -1,4 +1,4 @@
-package app.practice.springbootpractice;
+package app.practice.springbootpractice.cache.local;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
