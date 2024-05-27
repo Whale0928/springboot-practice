@@ -10,3 +10,13 @@ spring:
     console:
       enabled: true
       path: /h2
+
+# 액세스
+# 시크릿 액세스
+amazon:
+  aws:
+    accessKey: ${AMAZON_AWS_ACCESS_KEY}
+    secretKey: ${AMAZON_AWS_SECRET_KEY}
+    region: ${AMAZON_AWS_REGION}
+    bucket: ${AMAZON_AWS_BUCKET}
+    cloudFrontUrl: ${AMAZON_AWS_CLOUDFRONT_URL}
