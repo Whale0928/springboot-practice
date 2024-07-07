@@ -1,0 +1,28 @@
+name: Merge Dev to Main
+
+on:
+  schedule:
+    - cron: '0 0 * * MON' # 매주 월요일 0시에 실행
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Merge dev into main
+        run: |
+          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git fetch origin
+          git checkout main
+          git merge origin/dev --no-ff -m "Auto-merge dev into main"
+          git push origin main
