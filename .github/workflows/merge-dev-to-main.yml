@@ -1,4 +1,4 @@
-name: Merge Dev to Main
+name: Rebase Dev onto Main
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:   # 수동으로 실행 가능하다.
 
 jobs:
-  merge:
+  rebase:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,11 +19,11 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Merge dev into main
+          
+      - name: Rebase dev onto main
         run: |
           git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git fetch origin
           git checkout main
-          git merge origin/dev --no-ff -m "Auto-merge dev into main"
-          git push origin main
+          git rebase origin/dev
+          git push origin main --force
