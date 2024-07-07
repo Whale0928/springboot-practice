@@ -38,3 +38,10 @@
 > 이벤트 리스너는 특정 이벤트가 발생했을 때, 특정 동작을 수행할 수 있도록 하는 방법입니다. 스프링에서는 ApplicationListener 인터페이스를 구현하여 이벤트 리스너를 생성할 수 있습니다.
 
 - https://www.baeldung.com/spring-events
+
+-----
+
+### github action passivity badge && weekly work flow
+
+```markdown
+[![Merge Dev to Main](https://github.com/Whale0928/springboot-practice/actions/workflows/merge-dev-to-main.yml/badge.svg)](https://github.com/Whale0928/springboot-practice/actions/workflows/merge-dev-to-main.yml)
